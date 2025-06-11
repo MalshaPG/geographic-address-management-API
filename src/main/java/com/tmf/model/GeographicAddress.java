@@ -1,8 +1,10 @@
 package com.tmf.model;
 
 import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -15,7 +17,9 @@ public class GeographicAddress {
     private String country;
 
     private GeographicLocationReforValue geographicLocation;
-    private List<GeographicSubAddress> geographicSubAddress;
+
+    @DBRef //Create a reference to the sub-address document
+    private List<GeographicSubAddress> geographicSubAddress = new ArrayList<>();
 
     private String locality;
     private String postcode;
