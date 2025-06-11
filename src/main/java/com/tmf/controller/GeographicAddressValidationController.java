@@ -18,6 +18,15 @@ public class GeographicAddressValidationController {
     @Autowired
     private GeographicAddressValidationRepository validationRepo;
 
+    /**
+     * POST /geographicAddressValidation
+     *
+     * Creates a new validation request.
+     * Automatically generates ID, sets status and timestamps.
+     *
+     * @param validation The request body representing the address to validate
+     * @return The created validation object with HTTP 201 Created status
+     */
     @PostMapping
     public ResponseEntity<GeographicAddressValidation> createValidatedAddress(@RequestBody GeographicAddressValidation validation) {
         validation.setId(UUID.randomUUID().toString());
@@ -28,12 +37,27 @@ public class GeographicAddressValidationController {
                 .body(validationRepo.save(validation));
     }
 
+    /**
+     * GET /geographicAddressValidation
+     *
+     * Retrieves all previously created validations.
+     *
+     * @return List of all validation records with HTTP 200 OK
+     */
     @GetMapping
     public ResponseEntity<List<GeographicAddressValidation>> getAllValidatedAddresses() {
         List<GeographicAddressValidation> allValidatedAddress = validationRepo.findAll();
         return new ResponseEntity<>(allValidatedAddress, HttpStatus.OK);
     }
 
+    /**
+     * GET /geographicAddressValidation/{id}
+     *
+     * Retrieves a specific validation by its unique ID.
+     *
+     * @param id The validation ID
+     * @return The found validation with HTTP 200 OK, or throws AddressNotFoundException
+     */
     @GetMapping("/{id}")
     public ResponseEntity<GeographicAddressValidation> getValidatedAddressById(@PathVariable String id) {
         return validationRepo.findById(id)
@@ -41,6 +65,15 @@ public class GeographicAddressValidationController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    /**
+     * PATCH /geographicAddressValidation/{id}
+     *
+     * Partially updates an existing validation's fields (e.g., status).
+     *
+     * @param id The ID of the validation to update
+     * @param updates A map of field names and their updated values
+     * @return The updated validation object with HTTP 200 OK, or throws AddressNotFoundException
+     */
     @PatchMapping("/{id}")
     public ResponseEntity<GeographicAddressValidation> updateValidatedAddress(
             @PathVariable String id,
