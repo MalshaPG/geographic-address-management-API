@@ -3,11 +3,12 @@ package com.tmf.model;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
-@Document(collection = "geographicSubAddresses")
+@Document(collection = "GeographicSubAddresses")
 public class GeographicSubAddress {
-    @Id
+    @Field("id")
     private String id;
     private String href;
     private String name;
