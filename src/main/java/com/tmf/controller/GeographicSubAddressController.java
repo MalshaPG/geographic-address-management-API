@@ -13,9 +13,11 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/tmf-api/geographicAddressManagement/v4/geographicAddress/{addressId}/geographicSubAddress")
+@RequestMapping("/tmf-api/geographicAddress/{addressId}/geographicSubAddress")
 public class GeographicSubAddressController {
 
     @Autowired
@@ -37,7 +39,7 @@ public class GeographicSubAddressController {
 
         GeographicAddress address = addressOptional.get();
 
-        // Get the sub-address list from the address
+        // Get the sub-addresses from the address
         List<GeographicSubAddress> subAddresses = address.getGeographicSubAddress();
 
         // Convert to ArrayList (if needed) and return

@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface GeographicAddressValidationRepository extends MongoRepository<GeographicAddressValidation, String> {
     // Main CRUD methods auto-generate
-    List<GeographicAddressValidation> findByStatus(String status);
+    List<GeographicAddressValidation> findByState(String state);
     List<GeographicAddressValidation> findByProvideAlternative(boolean provideAlternative);
-    List<GeographicAddressValidation> findByStatusAndProvideAlternative(String address, boolean provideAlternative);
+    List<GeographicAddressValidation> findByStateAndProvideAlternative(String address, boolean provideAlternative);
 }
 

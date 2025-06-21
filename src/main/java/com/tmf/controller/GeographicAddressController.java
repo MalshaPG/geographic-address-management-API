@@ -13,8 +13,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/tmf-api/geographicAddressManagement/v4/geographicAddress")
+@RequestMapping("/tmf-api/geographicAddress")
 public class GeographicAddressController {
 
     @Autowired
