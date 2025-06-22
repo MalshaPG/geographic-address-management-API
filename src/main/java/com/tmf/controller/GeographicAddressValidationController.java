@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.UUID;
 
-@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/tmf-api/geographicAddressValidation")
 public class GeographicAddressValidationController {

@@ -4,6 +4,7 @@ import com.tmf.exception.AddressNotFoundException;
 import com.tmf.model.GeographicAddress;
 import com.tmf.repository.GeographicAddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,13 +14,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:3000")
+
 @RestController
 @RequestMapping("/tmf-api/geographicAddress")
 public class GeographicAddressController {
 
     @Autowired
     private GeographicAddressRepository geographicAddressRepository;
+
+
 
     /**
      * GET /tmf-api/geographicAddressManagement/v4/geographicAddress
